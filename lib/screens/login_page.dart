@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:language_app/screens/signup_page.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen();
@@ -74,14 +75,14 @@ class _LoginscreenState extends State<Loginscreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            print('f');
+                            Navigator.pushNamed(context, Signup.id);
                           },
                           child: Container(
                             height: 50,
                             width: 120,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Color.fromRGBO(255, 211, 113, 1),
+                              color: const Color.fromRGBO(255, 211, 113, 1),
                             ),
                             margin:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
@@ -95,7 +96,7 @@ class _LoginscreenState extends State<Loginscreen> {
                             width: 120,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Color.fromRGBO(255, 211, 113, 1),
+                              color: const Color.fromRGBO(255, 211, 113, 1),
                             ),
                             margin:
                                 const EdgeInsets.symmetric(horizontal: 10.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:language_app/screens/login_page.dart';
+import 'package:language_app/screens/signup_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: Loginscreen.id,
       routes: {
         Loginscreen.id: (context) => const Loginscreen(),
+        Signup.id: (context) => const Signup(),
       },
     );
   }
