@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "229416745012",
+    "project_id": "language-learning-app-6072c",
+    "storage_bucket": "language-learning-app-6072c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229416745012:android:706ebf4b14637fdbafb261",
+        "android_client_info": {
+          "package_name": "com.meknad.languageapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229416745012-8u0qtjmfbgp974ipdf188350n7bnigm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhVCExKwXL-yYhbV7nFd51XpCx0GSjhIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229416745012-8u0qtjmfbgp974ipdf188350n7bnigm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

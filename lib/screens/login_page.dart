@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:language_app/screens/loading.dart';
 import 'package:language_app/screens/signup_page.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -90,7 +91,9 @@ class _LoginscreenState extends State<Loginscreen> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, Loadingpage.id);
+                          },
                           child: Container(
                             height: 50,
                             width: 120,
