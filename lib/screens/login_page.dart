@@ -121,7 +121,7 @@ class _LoginscreenState extends State<Loginscreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
                             Icon(Icons.mail),
-                            Text('Connect with Gmail Account'),
+                            Text('Connect with your Gmail Account'),
                           ],
                         ),
                       ),
