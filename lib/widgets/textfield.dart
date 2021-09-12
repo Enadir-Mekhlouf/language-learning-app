@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class Textfieldinput extends StatelessWidget {
   final String textfield;
   final Widget iconfield;
+  final ValueChanged<String> onchangedfun;
   const Textfieldinput(
     this.textfield,
     this.iconfield,
+    this.onchangedfun,
   );
 
   @override
@@ -14,6 +16,7 @@ class Textfieldinput extends StatelessWidget {
       width: 250,
       height: 50,
       child: TextField(
+        onChanged: onchangedfun,
         decoration: InputDecoration(
           prefixIcon: iconfield,
           filled: true,

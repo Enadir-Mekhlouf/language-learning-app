@@ -11,6 +11,10 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  String username = '';
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,36 +34,50 @@ class _SignupState extends State<Signup> {
 
                 const Text('Signup Page'),
 
-                const Textfieldinput(
+                Textfieldinput(
                   'username',
                   Icon(Icons.face_rounded),
+                  (value) {
+                    username = value;
+                  },
                 ),
                 //
                 //
 
-                const Textfieldinput(
+                Textfieldinput(
                   'Email',
                   Icon(Icons.email_outlined),
+                  (value) {
+                    email = value;
+                  },
                 ),
                 //
                 //
 
                 //
 
-                const Textfieldinput(
+                Textfieldinput(
                   'password',
                   Icon(Icons.password),
+                  (value) {
+                    password = value;
+                  },
                 ),
                 //
-                const Textfieldinput(
+                Textfieldinput(
                   'password',
                   Icon(Icons.password),
+                  (value) {
+                    password = value;
+                  },
                 ),
 
                 //
 
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    print(password);
+                  },
                   child: Container(
                     height: 50,
                     width: 120,
