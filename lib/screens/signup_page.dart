@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:language_app/widgets/textfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:language_app/screens/loading.dart';
 
 class Signup extends StatefulWidget {
   const Signup();
@@ -34,13 +37,13 @@ class _SignupState extends State<Signup> {
 
                 const Text('Signup Page'),
 
-                Textfieldinput(
-                  'username',
-                  Icon(Icons.face_rounded),
-                  (value) {
-                    username = value;
-                  },
-                ),
+                // Textfieldinput(
+                //   'username',
+                //   Icon(Icons.face_rounded),
+                //   (value) {
+                //     username = value;
+                //   },
+                // ),
                 //
                 //
 
@@ -56,13 +59,13 @@ class _SignupState extends State<Signup> {
 
                 //
 
-                Textfieldinput(
-                  'password',
-                  Icon(Icons.password),
-                  (value) {
-                    password = value;
-                  },
-                ),
+                // Textfieldinput(
+                //   'password',
+                //   Icon(Icons.password),
+                //   (value) {
+                //     password = value;
+                //   },
+                // ),
                 //
                 Textfieldinput(
                   'password',
@@ -75,8 +78,19 @@ class _SignupState extends State<Signup> {
                 //
 
                 GestureDetector(
-                  onTap: () {
-                    print(password);
+                  onTap: () async {
+                    try {
+                      print(email);
+                      print(password);
+                      final UserCredential newuser = await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newuser != null) {
+                        Navigator.pushNamed(context, Loadingpage.id);
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
                   },
                   child: Container(
                     height: 50,

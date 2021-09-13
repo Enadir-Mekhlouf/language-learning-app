@@ -3,8 +3,11 @@ import 'package:language_app/screens/login_page.dart';
 import 'package:language_app/screens/signup_page.dart';
 import 'package:language_app/screens/loading.dart';
 import 'package:language_app/screens/mainscreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

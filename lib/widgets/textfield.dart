@@ -16,6 +16,7 @@ class Textfieldinput extends StatelessWidget {
       width: 250,
       height: 50,
       child: TextField(
+        keyboardType: TextInputType.emailAddress,
         onChanged: onchangedfun,
         decoration: InputDecoration(
           prefixIcon: iconfield,
