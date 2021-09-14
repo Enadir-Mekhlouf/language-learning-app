@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:language_app/widgets/containerquiz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Mainscreen extends StatefulWidget {
   Mainscreen();
@@ -9,6 +11,26 @@ class Mainscreen extends StatefulWidget {
 }
 
 class _MainscreenState extends State<Mainscreen> {
+  final _auth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    getcurrentuser();
+  }
+
+  void getcurrentuser() async {
+    try {
+      final user = await _auth.currentUser;
+      if (user != null) {
+        print('hello guys how are you doing ');
+        print(user.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

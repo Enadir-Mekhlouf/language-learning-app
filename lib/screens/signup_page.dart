@@ -1,9 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:language_app/widgets/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:language_app/screens/loading.dart';
+import 'package:language_app/screens/mainscreen.dart';
 
 class Signup extends StatefulWidget {
   const Signup();
@@ -14,6 +15,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final _auth = FirebaseAuth.instance;
   String username = '';
   String email = '';
   String password = '';
@@ -82,11 +84,11 @@ class _SignupState extends State<Signup> {
                     try {
                       print(email);
                       print(password);
-                      final UserCredential newuser = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
+                      final newuser =
+                          await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
                       if (newuser != null) {
-                        Navigator.pushNamed(context, Loadingpage.id);
+                        Navigator.pushNamed(context, Mainscreen.id);
                       }
                     } catch (e) {
                       print(e);
