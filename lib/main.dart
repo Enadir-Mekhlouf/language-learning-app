@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         Loginscreen.id: (context) => const Loginscreen(),
         Signup.id: (context) => const Signup(),
         Loadingpage.id: (context) => const Loadingpage(),
-        Mainscreen.id: (context) => Mainscreen(),
+        Mainscreen.id: (context) => const Mainscreen(),
       },
     );
   }

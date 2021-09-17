@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:language_app/screens/loading.dart';
+import 'package:language_app/screens/mainscreen.dart';
 import 'package:language_app/screens/signup_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen();
@@ -12,6 +16,10 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
+  final _auth = FirebaseAuth.instance;
+  bool showspinner = false;
+  String email = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +41,10 @@ class _LoginscreenState extends State<Loginscreen> {
                       width: 250,
                       height: 50,
                       child: TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        onChanged: (value) {
+                          email = value;
+                        },
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.email_outlined),
                           filled: true,
@@ -54,11 +66,17 @@ class _LoginscreenState extends State<Loginscreen> {
                       width: 250,
                       height: 50,
                       child: TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        //TODO:change this false to true after
+                        obscureText: false,
+                        onChanged: (value) {
+                          password = value;
+                        },
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.vpn_key_outlined),
                           filled: true,
                           fillColor: Colors.grey[100],
-                          labelText: 'Email adress',
+                          labelText: 'Password',
                           border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.0),
@@ -92,7 +110,13 @@ class _LoginscreenState extends State<Loginscreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, Loadingpage.id);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Loadingpage(
+                                    email: email, password: password),
+                              ),
+                            );
                           },
                           child: Container(
                             height: 50,
@@ -109,7 +133,7 @@ class _LoginscreenState extends State<Loginscreen> {
                       ],
                     ),
                     const SizedBox(
-                      height: 19,
+                      height: 60,
                     ),
                     GestureDetector(
                       onTap: () {},

@@ -1,10 +1,13 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:language_app/screens/login_page.dart';
 import 'package:language_app/widgets/containerquiz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:language_app/screens/login_page.dart';
 
 class Mainscreen extends StatefulWidget {
-  Mainscreen();
+  const Mainscreen();
   static String id = 'mainscreen';
   @override
   _MainscreenState createState() => _MainscreenState();
@@ -12,7 +15,7 @@ class Mainscreen extends StatefulWidget {
 
 class _MainscreenState extends State<Mainscreen> {
   final _auth = FirebaseAuth.instance;
-
+  String? loguser;
   @override
   void initState() {
     super.initState();
@@ -25,6 +28,8 @@ class _MainscreenState extends State<Mainscreen> {
       if (user != null) {
         print('hello guys how are you doing ');
         print(user.email);
+        loguser = user.email;
+        print(loguser);
       }
     } catch (e) {
       print(e);
@@ -33,16 +38,24 @@ class _MainscreenState extends State<Mainscreen> {
 
   @override
   Widget build(BuildContext context) {
+    loguser = _auth.currentUser?.email;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            _auth.signOut();
+            Navigator.pushNamed(context, Loginscreen.id);
+          },
+        ),
         backgroundColor: const Color.fromRGBO(232, 255, 238, 1),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-              children: const [
+              children: [
                 Text(
-                  "A1 ",
+                  '$loguser',
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Text(
