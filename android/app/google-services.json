@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "229416745012",
-    "project_id": "language-learning-app-6072c",
-    "storage_bucket": "language-learning-app-6072c.appspot.com"
+    "project_number": "195229337451",
+    "firebase_url": "https://lemdegh-default-rtdb.firebaseio.com",
+    "project_id": "lemdegh",
+    "storage_bucket": "lemdegh.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:229416745012:android:706ebf4b14637fdbafb261",
+        "mobilesdk_app_id": "1:195229337451:android:825b3d3ae1546260b6ae2e",
         "android_client_info": {
-          "package_name": "com.meknad.languageapp"
+          "package_name": "com.meknadir.languageapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "229416745012-8u0qtjmfbgp974ipdf188350n7bnigm5.apps.googleusercontent.com",
+          "client_id": "195229337451-pgna3b04c65r69nseo4o71atq51p17v7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBhVCExKwXL-yYhbV7nFd51XpCx0GSjhIg"
+          "current_key": "AIzaSyDYkF43LVVeO9X6x0TW8GjarI-u_qdmf2o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "229416745012-8u0qtjmfbgp974ipdf188350n7bnigm5.apps.googleusercontent.com",
+              "client_id": "195229337451-pgna3b04c65r69nseo4o71atq51p17v7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

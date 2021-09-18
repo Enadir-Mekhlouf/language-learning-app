@@ -5,6 +5,7 @@ import 'package:language_app/screens/login_page.dart';
 import 'package:language_app/widgets/containerquiz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:language_app/screens/login_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Mainscreen extends StatefulWidget {
   const Mainscreen();
@@ -15,11 +16,22 @@ class Mainscreen extends StatefulWidget {
 
 class _MainscreenState extends State<Mainscreen> {
   final _auth = FirebaseAuth.instance;
+  final _database = FirebaseDatabase.instance.reference();
+
   String? loguser;
   @override
   void initState() {
     super.initState();
-    getcurrentuser();
+    //getcurrentuser();
+    _getdatabase();
+  }
+
+  void _getdatabase() async {
+    DataSnapshot snap =
+        await FirebaseDatabase.instance.reference().child('question').once();
+    final dbinfo = snap.value;
+    print('object------------------------------------------------');
+    print(dbinfo);
   }
 
   void getcurrentuser() async {
