@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:language_app/screens/login_page.dart';
+import 'package:language_app/screens/quizscreen.dart';
 import 'package:language_app/screens/signup_page.dart';
 import 'package:language_app/screens/loading.dart';
 import 'package:language_app/screens/mainscreen.dart';
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
         Signup.id: (context) => const Signup(),
         Loadingpage.id: (context) => const Loadingpage(),
         Mainscreen.id: (context) => const Mainscreen(),
+        Quizzscreen.id: (context) => const Quizzscreen(),
       },
     );
   }

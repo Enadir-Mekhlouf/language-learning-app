@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:language_app/widgets/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:language_app/screens/mainscreen.dart';
+import 'package:language_app/value.dart';
 
 class Signup extends StatefulWidget {
   const Signup();
@@ -13,6 +16,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final database = FirebaseDatabase.instance.reference();
   final _auth = FirebaseAuth.instance;
   String username = '';
   String email = '';
@@ -20,6 +24,9 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    final addusers = database.reference().child('/users');
+    final addcourse = database.reference().child('/course');
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -37,15 +44,13 @@ class _SignupState extends State<Signup> {
 
                 const Text('Signup Page'),
 
-                // Textfieldinput(
-                //   'username',
-                //   Icon(Icons.face_rounded),
-                //   (value) {
-                //     username = value;
-                //   },
-                // ),
-                //
-                //
+                Textfieldinput(
+                  'username',
+                  Icon(Icons.face_rounded),
+                  (value) {
+                    username = value;
+                  },
+                ),
 
                 Textfieldinput(
                   'Email',
@@ -80,11 +85,21 @@ class _SignupState extends State<Signup> {
                 GestureDetector(
                   onTap: () async {
                     try {
-                      print(email);
-                      print(password);
                       final newuser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email, password: password);
+                      await addusers
+                          .child(username)
+                          .push()
+                          .set({'username': username, 'email': email}).then(
+                        (value) => print("added username"),
+                      );
+                      await addcourse
+                          .child(username)
+                          .push()
+                          .set({'course': valuescourse}).then(
+                        (value) => print("adedcourse"),
+                      );
                       if (newuser != null) {
                         Navigator.pushNamed(context, Mainscreen.id);
                       }

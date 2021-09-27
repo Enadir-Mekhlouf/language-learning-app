@@ -1,10 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:language_app/screens/loading.dart';
 import 'package:language_app/screens/login_page.dart';
 import 'package:language_app/widgets/containerquiz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:language_app/screens/login_page.dart';
+import 'package:language_app/screens/quizscreen.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class Mainscreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class Mainscreen extends StatefulWidget {
 }
 
 class _MainscreenState extends State<Mainscreen> {
+  String word = '';
   final _auth = FirebaseAuth.instance;
   final _database = FirebaseDatabase.instance.reference();
 
@@ -22,7 +24,7 @@ class _MainscreenState extends State<Mainscreen> {
   @override
   void initState() {
     super.initState();
-    //getcurrentuser();
+    getcurrentuser();
     _getdatabase();
   }
 
@@ -54,7 +56,7 @@ class _MainscreenState extends State<Mainscreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             _auth.signOut();
             Navigator.pushNamed(context, Loginscreen.id);
@@ -68,9 +70,9 @@ class _MainscreenState extends State<Mainscreen> {
               children: [
                 Text(
                   '$loguser',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
-                Text(
+                const Text(
                   "Level ",
                   style: TextStyle(color: Colors.black, fontSize: 10),
                 ),
@@ -95,60 +97,198 @@ class _MainscreenState extends State<Mainscreen> {
                 const SizedBox(
                   height: 35,
                 ),
-                const Containerquiz('alphabet'),
+                GestureDetector(
+                  onTap: () {
+                    String word = 'alphabet';
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Quizzscreen(
+                          word: word,
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Containerquiz('alphabet'),
+                ),
                 const SizedBox(
                   height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Containerquiz('numbers'),
-                    SizedBox(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        String word = 'numbers';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Quizzscreen(
+                              word: word,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Containerquiz('numbers'),
+                    ),
+                    const SizedBox(
                       width: 15,
                     ),
-                    Containerquiz('basics'),
+                    GestureDetector(
+                      onTap: () {
+                        String word = 'basics';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Quizzscreen(
+                              word: word,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Containerquiz('basics'),
+                    ),
                   ],
                 ),
                 const SizedBox(
                   height: 35,
                 ),
-                const Containerquiz('alphabet'),
+                GestureDetector(
+                  onTap: () {
+                    String word = 'alphabet';
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Quizzscreen(
+                          word: word,
+                        ),
+                      ),
+                    );
+                  },
+                  child: const Containerquiz('alphabet'),
+                ),
                 const SizedBox(
                   height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Containerquiz('where'),
-                    SizedBox(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        String word = 'where';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Quizzscreen(
+                              word: word,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Containerquiz('where'),
+                    ),
+                    const SizedBox(
                       width: 15,
                     ),
-                    Containerquiz('animals'),
-                    SizedBox(
+                    GestureDetector(
+                        onTap: () {
+                          String word = 'animals';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quizzscreen(
+                                word: word,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Containerquiz('animals')),
+                    const SizedBox(
                       width: 15,
                     ),
-                    Containerquiz('colors'),
+                    GestureDetector(
+                        onTap: () {
+                          //TODO:change it to colors here and db later
+                          String word = 'color';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quizzscreen(
+                                word: word,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Containerquiz('colors')),
                   ],
                 ),
                 const SizedBox(
                   height: 35,
                 ),
-                const Containerquiz('basics'),
+                GestureDetector(
+                    onTap: () {
+                      String word = 'basics';
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Quizzscreen(
+                            word: word,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Containerquiz('basics')),
                 const SizedBox(
                   height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Containerquiz('where'),
-                    SizedBox(
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          String word = 'alphabet';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quizzscreen(
+                                word: word,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Containerquiz('where')),
+                    const SizedBox(
                       width: 15,
                     ),
-                    Containerquiz('animals'),
-                    SizedBox(
+                    GestureDetector(
+                        onTap: () {
+                          String word = 'alphabet';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quizzscreen(
+                                word: word,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Containerquiz('animals')),
+                    const SizedBox(
                       width: 15,
                     ),
-                    Containerquiz('colors'),
+                    GestureDetector(
+                        onTap: () {
+                          String word = 'alphabet';
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Quizzscreen(
+                                word: word,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Containerquiz('colors')),
                   ],
                 ),
               ],
